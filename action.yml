@@ -1,0 +1,17 @@
+# action.yml
+name: 'My Express App'
+description: 'Dockerizing Express app'
+secrets:
+  DOCKERHUB_USER:
+    description: 'DockerHub login username'
+    required: true
+    default: 'root'
+  DOCKERHUB_TOKEN:
+    description: 'Either the Password or Personal Access Token of the named user'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+    DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
