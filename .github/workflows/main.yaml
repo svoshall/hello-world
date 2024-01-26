@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: 16
           cache: "npm"
-
+          cache-dependency-path: expressapp/package-lock.json
       # install applicaion dependencies
       - name: Install dependencies
         # regular install and then clean install to confirm all dependencies are updated in the package-lock.json
