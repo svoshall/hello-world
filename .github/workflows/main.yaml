@@ -22,18 +22,16 @@ jobs:
         run: |
           echo "[PWD]: $(pwd)"
           echo "[LS]: $(ls -lah)"
-          echo "[expressapp LS]: $(ls -lah expressapp)"
       - name: setup node
         uses: actions/setup-node@v4
         with:
           node-version: 16
           cache: "npm"
-          cache-dependency-path: expressapp/package-lock.json
+          cache-dependency-path: package-lock.json
       # install applicaion dependencies
       - name: Install dependencies
         # regular install and then clean install to confirm all dependencies are updated in the package-lock.json
         run: |
-          cd expressapp
           npm install
           npm ci 
 
@@ -51,7 +49,6 @@ jobs:
         run: |
           echo "[PWD]: $(pwd)"
           echo "[LS]: $(ls -lah)"
-          echo "[expressapp LS]: $(ls -lah expressapp)"
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
     
@@ -68,14 +65,14 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./
-          file: expressapp/Dockerfile
+          file: Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/expressjs-demo:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/expressapp:latest
         
       - name: Run the image in a container
         uses: addnab/docker-run-action@v3
         with:
-          image: ${{ secrets.DOCKERHUB_USERNAME }}/expressjs-demo:latest
+          image: ${{ secrets.DOCKERHUB_USERNAME }}/expressapp:latest
           run: |
             echo "runing the docker image"
             echo "Testing the nodejs app endpoints"

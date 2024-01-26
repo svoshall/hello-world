@@ -2,7 +2,7 @@
 FROM node:slim
 
 # Setting up the work directory
-WORKDIR /expressapp
+WORKDIR /hello-world
 
 # Copying all the files in our project
 COPY . .
