@@ -78,5 +78,5 @@ jobs:
             echo "Testing the nodejs app endpoints"
             echo ${{ steps.docker_build.outputs.digest }}
       - name: Job complete
-        run: goodbye.sh
+        run: ./goodbye.sh
         shell: bash
