@@ -22,6 +22,7 @@ jobs:
         run: |
           echo "[PWD]: $(pwd)"
           echo "[LS]: $(ls -lah)"
+          echo "[expressapp LS]: $(ls -lah expressapp)"
       - name: setup node
         uses: actions/setup-node@v4
         with:
