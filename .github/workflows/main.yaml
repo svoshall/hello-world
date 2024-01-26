@@ -47,6 +47,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: dockerize
+      - name: Debug PWD
+        run: |
+          echo "[PWD]: $(pwd)"
+          echo "[LS]: $(ls -lah)"
+          echo "[expressapp LS]: $(ls -lah expressapp)"
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
     
@@ -63,7 +68,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./
-          file: ./Dockerfile
+          file: expressapp/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/expressjs-demo:latest
         
