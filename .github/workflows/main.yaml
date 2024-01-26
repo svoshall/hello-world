@@ -33,6 +33,7 @@ jobs:
       - name: Install dependencies
         # regular install and then clean install to confirm all dependencies are updated in the package-lock.json
         run: |
+          cd expressapp
           npm install
           npm ci 
 
